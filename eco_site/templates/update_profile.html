@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+
+
+
+{% block content %}
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-4">
+        <h1 class="h3 mb-0 text-gray-800">Profile Page</h1>
+        </div>
+
+        <!-- Main Content Here -->
+        <div class="row">
+
+          <div class="card o-hidden border-3 shadow-lg my-5 col-lg-5">
+            <div class="card-body">
+            <form action="{% url 'save_update_profile' %}" method="post">
+            {% csrf_token %}
+                {% for info in profile_info %}
+                <h2><strong>Update Personal Information</strong></h2>
+
+                    <div class="item">First Name<input type="text" name="firstname" value="{{ info.first_name }}"> </div>
+                    <div class="item">Last Name<input type="text" name="lastname" value="{{ info.last_name }}"> </div>
+                    <div class="item">Username<input type="text" name="username" value="{{ info.username }}"> </div>
+                    <div class="item">Email<input type="email" name="email" value="{{ info.email }}" readonly> </div>
+
+{#                <p><strong>Username: </strong> {{user.username}} </p>#}
+{#                <p><strong>Email: </strong> {{user.email}} </p>#}
+{#                <p><strong>Bio: </strong> {{user.profile.bio}} </p>#}
+{#                <p><strong>Phone Number: </strong> {{user.profile.phone_number}} </p>#}
+{#                <p><strong>DOB: </strong> {{user.profile.birth_date}} </p>#}
+                    <button class="btn btn-sm btn-primary shadow-sm">Save Update</button>
+            {% endfor %}
+            </form></div>
+          </div>
+        </div>
+    </div>
+{% endblock %}

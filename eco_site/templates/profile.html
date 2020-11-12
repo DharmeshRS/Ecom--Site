@@ -1,0 +1,52 @@
+
+
+{% extends 'index.html' %}
+
+
+
+{% block content %}
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+    {% load static %}
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-4">
+        <a href="{% url 'index' %}"> Go To Homepage</a>
+            <h1 class="h3 mb-0 text-gray-800"><img src="{% static  'img/worker.png' %}" style="width: 8%">Profile Page</h1>
+        </div><small></small>
+
+        <!-- Main Content Here -->
+        <div class="row">
+
+          <div class="card o-hidden border-3 shadow-lg my-5 col-lg-5">
+            <div class="card-body">
+                <h2><strong>Personal Information</strong></h2>
+
+                <p><h2><strong>Firstname: </strong> {{user.first_name}}</h2> </p>
+                <p><strong>Lastname: </strong> {{user.last_name}} </p>
+                <p><strong>Username: </strong> {{user.username}} </p>
+                <p><strong>Email: </strong> {{user.email}} </p>
+                <a href="{% url 'update_profile' %}?userid={{ user.id }}" class="btn btn-sm btn-primary shadow-sm">Update Profile</a>
+            </div>
+          </div>
+          <div class="card o-hidden border-3 shadow-lg my-5 col-lg-5">
+            <div class="card-body">
+                <h2><strong>Address Information</strong></h2>
+                <p><strong>Mobile No.(valid): </strong> None </p>
+                <p><strong>House NO.: </strong> None </p>
+                <p><strong>Street: </strong> None </p>
+                <p><strong>City: </strong> None </p>
+                <p><strong>District: </strong> None </p>
+                <p><strong>State: </strong> None </p>
+
+
+                <a href="#" class="btn btn-sm btn-primary shadow-sm">Update Address Information</a>
+            </div>
+          </div>
+        </div>
+
+
+
+    </div>
+    <!-- /.container-fluid -->
+{% endblock content %}

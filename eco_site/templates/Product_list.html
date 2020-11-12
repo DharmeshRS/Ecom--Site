@@ -1,0 +1,65 @@
+{% extends 'index.html' %}
+{% load static %}
+<hr>
+
+    {% block content %}
+
+{##}
+{#    <link#}
+{# href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"#}
+{# rel="stylesheet"#}
+{#integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"#}
+{# crossorigin="anonymous"#}
+{#>#}
+{#</head>#}
+<body>
+        {% if product_data %}
+{% for product in product_data %}
+    <hr>
+<div class="container" id="product-section" style="background-color: rgba(151,191,209,0.9)">
+  <div class="row">
+   <div class="col-md-5 ml-5">
+    <img src="{{ product.product_image.url }}" alt="Product Image Temperory Not Available" class="image-responsive" style="margin-top: 5%"/>
+   </div>
+   <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-offset-12">
+                <h1>{{ product.product_name }}</h1>
+                <h3>Category :{{ product.product_category }}</h3>
+                <h5><sub><strike> ₹{{ product.product_origonal_price }}</strike></sub> <small>Now </small>₹{{ product.product_discounted_price }}</h5>
+                <h5>{{ product.product_description }}</h5>
+                <button type="button" class="btn btn-outline-primary mb-2">Add to Cart</button>
+                <button type="button" class="btn btn-outline-warning mb-2">Buy Now</button>
+            </div>
+       </div>
+   </div>
+  </div><!-- end row -->
+ </div>
+    <hr>
+<!-- end container -->
+{% endfor %}
+            {% else %}
+            <div class="container" id="product-section" style="background-color: rgba(151,191,209,0.9)">
+                <div class="row">
+                    <div class="col-md-7 ml-5">
+                        <h2>Sorry...No Product Added Yet</h2>
+                    </div>
+                </div>
+            </div>
+
+
+        {% endif %}
+
+
+<script
+     src="https://code.jquery.com/jquery-2.2.2.min.js"
+     integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
+     crossorigin="anonymous"></script>
+ <script
+     src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+     integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+     crossorigin="anonymous"></script>
+{% endblock %}
+</body>
+</html>
+
